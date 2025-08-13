@@ -3,48 +3,45 @@ package input;
 import java.util.Scanner;
 
 public class DeadCode {
-  public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
-    Employee emp = new Employee();
-    System.out.println("Choose your role:");
-    System.out.println("1. Manager");
-    System.out.println("2. Employee");
-    System.out.print("Enter 1 or 2: ");
-    int roleChoice = input.nextInt();
-    input.nextLine();
-    emp.setRole(roleChoice);
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        Employee emp = new Employee();
 
-    String name;
-      do {
-        System.out.print("Enter your name (letters and numbers only): ");
-        name = input.nextLine();
-        name = name.replaceAll("[^a-zA-Z0-9\u0600-\u06FF]", "");
-      } while (name.isBlank());
-      emp.setname(name); // حفظ الاسم في الكائن
-      System.out.println("Welcome, " + name);
+        do {
+            System.out.println("Enter your name:");
+            emp.setName(input.next().toLowerCase().trim());
 
-// ❗ "نفي" أو "ليس" (Logical NOT)
+        } while (emp.getName().isEmpty() || !emp.getName().matches("[a-zA-Z]+"));
+        System.out.println("You can enter--->");
 
-      // إدخال باقي البيانات
-      System.out.print("Enter number of hours worked: ");
-      double hours = input.nextDouble();
-      emp.setHoursWorked(hours);
+        System.out.println("In first chose 1.Developer Or 2.Dail Employ");
+       emp.setRole(input.nextInt());
 
-      System.out.print("Enter hourly rate: ");
-      int rate = input.nextInt();
-      emp.setHourlyRate(rate);
+       if (emp.getRole() == 1) {
+           Developer dev =new Developer();
+            System.out.println("your salary is "+(total_Salary_inMonth));
 
-      System.out.print("Enter number of working days: ");
-      int days = input.nextInt();
-      emp.setcountDaysofWork(days);
+        } else if ( emp.getRole()== 2) {
+            System.out.println("You chose Daily Employee");
 
+        } else {
+            System.out.println("Invalid choice!");
+        }
 
+        System.out.println("Enter your id: ");
+        emp.setUserId(input.nextInt());
+        System.out.println("Hourly Rate");
+        emp.setHourlyRate(input.nextDouble());
+        System.out.println("hoursWorked");
+        emp.setHoursWorked(input.nextDouble());
 
-      // عرض البيانات
-      System.out.println("\n--- Employee Details ---");
-      emp.display();
+        System.out.println("How mune days did you work");
+        emp.setCountDaysofWork(input.nextInt());
 
-      input.close();
+        System.out.println("How mune did you take days off");
+        emp.setDayOff(input.nextInt());
+
+        emp.display();
+        input.close();
     }
-  }
-
+}
