@@ -1,51 +1,82 @@
 package input;
 public class Employee {
     private String name;
-    private String role;
+  protected int userId;
     private double hoursWorked;
-    private int hourlyRate;
+    private double hourlyRate;
     private int countDaysofWork;
     private int dayOff;
+    private int role;
+
 
     private final int TOTAL_DAYS_IN_MONTH = 30;
 
-    public void setname(String name) {
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setRole(int roleNumber) {
-        if (roleNumber == 1) {
-            this.role = "manager";
-            this.hourlyRate = 100;
-        } else if (roleNumber == 2) {
-            this.role = "employee";
-            this.hourlyRate = 50;
-        } else {
-            this.role = "unknown";
-            this.hourlyRate = 0;
-        }
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public double getHoursWorked() {
+        return hoursWorked;
     }
 
     public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
 
-    public void setHourlyRate(int hourlyRate) {
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(double hourlyRate) {
         this.hourlyRate = hourlyRate;
     }
 
-    public void setcountDaysofWork(int countDaysofWork) {
-        this.countDaysofWork = countDaysofWork;
-        // نحسب عدد أيام الغياب تلقائيًا
-        this.dayOff = TOTAL_DAYS_IN_MONTH - countDaysofWork;
+    public int getCountDaysofWork() {
+        return countDaysofWork;
     }
 
-    public void display() {
-        System.out.println("Name: " + name);
-        System.out.println("Role: " + role);
-        System.out.println("Hours Worked: " + hoursWorked);
-        System.out.println("Working Days: " + countDaysofWork);
-        System.out.println("Days Off: " + dayOff);
-        System.out.println("Total Salary: " + (hoursWorked * hourlyRate));
+    public void setCountDaysofWork(int countDaysofWork) {
+        this.countDaysofWork = countDaysofWork;
     }
-}
+
+    public int getDayOff() {
+        return dayOff;
+    }
+
+    public void setDayOff(int dayOff) {
+        this.dayOff = dayOff;
+    }
+
+    public int getTOTAL_DAYS_IN_MONTH() {
+        return TOTAL_DAYS_IN_MONTH;
+    }
+        public void display() {
+            System.out.println("Employee Name: " + name);
+            System.out.println("User ID: " + userId);
+            System.out.println("Total Salary: " + (hoursWorked * hourlyRate));
+            System.out.println("Hourly Rate: " + hourlyRate);
+            System.out.println("Days Worked: " + countDaysofWork);
+            System.out.println("Remaining Days: " + (TOTAL_DAYS_IN_MONTH - dayOff));
+        }
+
+    }
